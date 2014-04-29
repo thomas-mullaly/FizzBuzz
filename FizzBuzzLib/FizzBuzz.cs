@@ -17,6 +17,11 @@ namespace FizzBuzzLib
         {
             var processedNumbers = new List<string>();
 
+            if (range.Start > range.End)
+            {
+                throw new ArgumentException("The range Start must be less then the range End");
+            }
+
             for (int i = range.Start; i < range.End; ++i)
             {
                 string processedNumber = String.Empty;

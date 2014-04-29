@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace FizzBuzzLib.Tests.FizzBuzzTests
@@ -18,7 +19,7 @@ namespace FizzBuzzLib.Tests.FizzBuzzTests
         [TestCase(15, 20, new [] { "FizzBuzz", "16", "17", "Fizz", "19"})]
         public void ReturnTheExpectedList(int start, int end, IList<string> expectedResults)
         {
-            FizzBuzzRange range = new FizzBuzzRange
+            var range = new FizzBuzzRange
             {
                 Start = start,
                 End = end
@@ -31,6 +32,18 @@ namespace FizzBuzzLib.Tests.FizzBuzzTests
             {
                 Assert.AreEqual(expectedResults[i], result[i]);
             }
+        }
+
+        [Test]
+        public void ThrowAnExceptionIfTheRangeIsInvalid()
+        {
+            var range = new FizzBuzzRange
+            {
+                Start = 12,
+                End = 5
+            };
+
+            Assert.Throws<ArgumentException>(() => _fizzBuzz.ProcessNumbers(range));
         }
     }
 }
