@@ -45,5 +45,36 @@ namespace FizzBuzzLib.Tests.FizzBuzzTests
 
             Assert.Throws<ArgumentException>(() => _fizzBuzz.ProcessNumbers(range));
         }
+
+        public class FooFizzBuzzRule : IFizzBuzzRule
+        {
+            public string Apply(int number)
+            {
+                return number % 3 == 0 ? "Foo" : String.Empty;
+            }
+        }
+
+        [Test]
+        public void HonorAnyCustomFizzBuzzRules()
+        {
+            var range = new FizzBuzzRange
+            {
+                Start = 1,
+                End = 6
+            };
+
+            var expectedResult = new List<string> { "1", "2", "Foo", "4", "5" };
+            var rules = new List<IFizzBuzzRule> { new FooFizzBuzzRule() };
+
+            var fizzBuzz = new FizzBuzz(rules);
+
+            IList<string> result = fizzBuzz.ProcessNumbers(range);
+
+            Assert.AreEqual(expectedResult.Count, result.Count);
+            for (int i = 0; i < expectedResult.Count; ++i)
+            {
+                Assert.AreEqual(expectedResult[i], result[i]);
+            }
+        }
     }
 }
