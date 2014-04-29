@@ -13,6 +13,11 @@ namespace FizzBuzzLib
             _rules = new List<IFizzBuzzRule> {new ThreesFizzBuzzRule(), new FivesFizzBuzzRule()};
         }
 
+        public FizzBuzz(IList<IFizzBuzzRule> rules)
+        {
+            _rules = rules;
+        }
+
         public IList<string> ProcessNumbers(FizzBuzzRange range)
         {
             var processedNumbers = new List<string>();
