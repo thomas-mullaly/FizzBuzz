@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using FizzBuzzLib.DefaultRules;
 using NUnit.Framework;
 
 namespace FizzBuzzLib.Tests.FizzBuzzTests
@@ -63,8 +64,8 @@ namespace FizzBuzzLib.Tests.FizzBuzzTests
                 End = 6
             };
 
-            var expectedResult = new List<string> { "1", "2", "Foo", "4", "5" };
-            var rules = new List<IFizzBuzzRule> { new FooFizzBuzzRule() };
+            var expectedResult = new List<string> { "1", "2", "Foo", "4", "" };
+            var rules = new List<IFizzBuzzRule> { new FooFizzBuzzRule(), new DefaultFizzBuzzRule() };
 
             var fizzBuzz = new FizzBuzz(rules);
 

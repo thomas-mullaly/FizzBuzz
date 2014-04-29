@@ -10,7 +10,7 @@ namespace FizzBuzzLib
 
         public FizzBuzz()
         {
-            _rules = new List<IFizzBuzzRule> {new ThreesFizzBuzzRule(), new FivesFizzBuzzRule()};
+            _rules = new List<IFizzBuzzRule> {new ThreesFizzBuzzRule(), new FivesFizzBuzzRule(), new DefaultFizzBuzzRule()};
         }
 
         public FizzBuzz(IList<IFizzBuzzRule> rules)
@@ -34,11 +34,6 @@ namespace FizzBuzzLib
                 foreach (var rule in _rules)
                 {
                     processedNumber += rule.Apply(i);
-                }
-
-                if (String.IsNullOrEmpty(processedNumber))
-                {
-                    processedNumber = i.ToString();
                 }
 
                 processedNumbers.Add(processedNumber);
