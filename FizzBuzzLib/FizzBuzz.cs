@@ -1,33 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FizzBuzzLib
 {
     public class FizzBuzz
     {
-        public string ProcessNumber(int number)
+        public IList<string> ProcessNumbers(FizzBuzzRange range)
         {
-            string processedNumber = String.Empty;
+            var processedNumbers = new List<string>();
 
-            if (number % 3 == 0)
+            for (int i = range.Start; i < range.End; ++i)
             {
-                processedNumber = "Fizz";
+                string processedNumber = String.Empty;
+
+                if (i % 3 == 0)
+                {
+                    processedNumber = "Fizz";
+                }
+
+                if (i % 5 == 0)
+                {
+                    processedNumber += "Buzz";
+                }
+
+                if (String.IsNullOrEmpty(processedNumber))
+                {
+                    processedNumber = i.ToString();
+                }
+
+                processedNumbers.Add(processedNumber);
             }
 
-            if (number % 5 == 0)
-            {
-                processedNumber += "Buzz";
-            }
-
-            if (!String.IsNullOrEmpty(processedNumber))
-            {
-                return processedNumber;
-            }
-
-            return number.ToString();
+            return processedNumbers;
         }
     }
 }

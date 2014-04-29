@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FizzBuzzLib;
 
 namespace FizzBuzzApp
@@ -8,10 +9,15 @@ namespace FizzBuzzApp
         static void Main(string[] args)
         {
             FizzBuzz fizzBuzz = new FizzBuzz();
-            for (int i = 1; i <= 100; ++i)
+            FizzBuzzRange range = new FizzBuzzRange
             {
-                Console.WriteLine(fizzBuzz.ProcessNumber(i));
-            }
+                Start = 1,
+                End = 101
+            };
+
+            IList<string> result = fizzBuzz.ProcessNumbers(range);
+
+            Console.WriteLine(String.Join(Environment.NewLine, result));
 
             Console.Read();
         }
