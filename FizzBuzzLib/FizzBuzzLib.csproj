@@ -39,8 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultRules\FivesFizzBuzzRule.cs" />
+    <Compile Include="DefaultRules\ThreesFizzBuzzRule.cs" />
     <Compile Include="FizzBuzz.cs" />
     <Compile Include="FizzBuzzRange.cs" />
+    <Compile Include="IFizzBuzzRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

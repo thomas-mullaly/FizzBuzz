@@ -1,10 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using FizzBuzzLib.DefaultRules;
 
 namespace FizzBuzzLib
 {
     public class FizzBuzz
     {
+        private readonly IList<IFizzBuzzRule> _rules;
+
+        public FizzBuzz()
+        {
+            _rules = new List<IFizzBuzzRule> {new ThreesFizzBuzzRule(), new FivesFizzBuzzRule()};
+        }
+
         public IList<string> ProcessNumbers(FizzBuzzRange range)
         {
             var processedNumbers = new List<string>();
@@ -13,14 +21,9 @@ namespace FizzBuzzLib
             {
                 string processedNumber = String.Empty;
 
-                if (i % 3 == 0)
+                foreach (var rule in _rules)
                 {
-                    processedNumber = "Fizz";
-                }
-
-                if (i % 5 == 0)
-                {
-                    processedNumber += "Buzz";
+                    processedNumber += rule.Apply(i);
                 }
 
                 if (String.IsNullOrEmpty(processedNumber))

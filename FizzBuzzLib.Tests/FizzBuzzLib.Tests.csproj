@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultRules\FivesFizzBuzzRuleTests\ApplyShould.cs" />
+    <Compile Include="DefaultRules\ThreesFizzBuzzRuleTests\ApplyShould.cs" />
     <Compile Include="FizzBuzzTests\ProcessNumbersShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
